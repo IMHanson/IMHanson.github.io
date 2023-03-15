@@ -1,0 +1,192 @@
+/* Universal Styles */
+
+html {
+    font-family: 'Laila', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.main-content {
+    position: relative;
+    top: 4.6rem;
+    width: 100%;
+}
+
+.cursive {
+    font-style: italic;
+}
+
+.center {
+    text-align: center;
+}
+
+.image-container {
+    overflow: hidden;
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Header */
+
+header {
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    background-color: #111;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+header .content {
+    display: flex;
+    align-items: center;
+    padding: 1.875rem;
+    max-height: 1.4rem;
+}
+
+header .logo {
+    flex: 1;
+    font-weight: bold;
+    font-size: 2rem;
+    text-decoration: none;
+    color: bisque;
+}
+
+header nav ul {
+    display: flex;
+}
+
+nav li {
+    list-style: none;
+    padding-left: 3.5rem;
+}
+
+nav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    vertical-align: bottom;
+    line-height: 1.6;
+    font-size: 1.4rem;
+    color: bisque;
+}
+
+header .icon {
+    width: 1rem;
+    padding-left: .75rem;
+    color: #f1f1f1;
+}
+
+header .mobile {
+    display: none;
+}
+
+/* Intro Section */
+
+#intro-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 43.5rem;
+    background-image: url('/static/pictures/photography/lofoten_fisk.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#intro-banner {
+    position: relative;
+    left: 10%;
+    top: 10%;
+    padding: 2.5rem 5rem;
+    border-radius: 7px;
+    background-color: rgba(62, 49, 38, 0.5);
+}
+
+#intro-banner .content {
+    width: 30rem;
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: bisque;
+}
+
+#intro-banner .image-container {
+    height: 15rem;
+    margin: auto 2.5 2.5 5;
+    background-image: url('/static/logos/ian-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#intro-banner h1 {
+    font-size: 3.125rem;
+    font-weight: bold;
+}
+
+#motto {
+    text-transform: capitalize;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 760px) {
+    .main-content {
+        top: 3rem;
+    }
+
+    header .desktop {
+        display: none;
+    }
+
+    header .mobile {
+        display: block;
+    }
+
+    header .content {
+        padding: .5rem 0;
+    }
+
+    header .mobile ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    header .mobile li {
+        padding: 0;
+    }
+
+    #intro-section {
+        align-items: center;
+        justify-content: center;
+        height: 28rem;
+    }
+
+    #intro-banner {
+        position: static;
+        width: auto;
+        height: auto;
+    }
+
+    #intro-banner .content {
+        margin-top: 0;
+    }
+
+    #intro-banner h1 {
+        font-size: 3.125rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #intro-section {
+        height: 20rem;
+    }
+
+    #intro-banner h1 {
+        font-size: 2.25rem;
+    }
+}

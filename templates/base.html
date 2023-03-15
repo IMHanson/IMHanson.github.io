@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="../resources/styles.css">
-        <title>IMHanson - Ian Hanson</title> 
-    </head>
-    <body>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <title>IMHanson - Ian Hanson</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="content">
+            <a href="/" class="desktop logo">IMHanson - Ian Hanson</a>
+            <a href="/" class="mobile logo icon"><img src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="ian-logo"></a>
+            <nav class="desktop">
+                <ul>
+                    {% for page in pages %}
+                    {% endfor %}
+                    <li><a href="/adventures">adventures</a></li>
+                    <li><a href="/projects">projects</a></li>
+                    <li><a href="/about">about</a></li>
+                </ul>
+            </nav>
+            <nav class="mobile">
+                <ul>
+                    <li><a class="icon" href="/adventures"></a><img src="{{ url_for('static', filename='logos/adventure-logo.png') }}" alt="adventure-logo"></li>
+                    <li><a class="icon" href="/projects"></a><img src="{{ url_for('static', filename='logos/projects-logo.png') }}" alt="projects-logo"></li>
+                    <li><a class="icon" href="/about"></a><img src="{{ url_for('static', filename='logos/about-logo.png') }}" alt="about-logo"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
         {% block content %}
         {% endblock %}
-    </body>
+    </div>
+
+</body>
+
 </html>
