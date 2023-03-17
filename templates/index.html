@@ -1,16 +1,51 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <!-- Intro Section -->
 <div id="intro-section" class="banner">
     <div id="intro-banner">
-        <div class="content">
-            <div class="image-container"></div>
-            <h1>IMHanson - Ian Hanson </h1>
+        <div class="content center">
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="ian-logo">
+            </div>
+            <h1>Ian Hanson</h1>
             <h2 id="motto" class="cursive">never stop learning</h2>
         </div>
     </div>
+    <div id="intro-text">
+        <div class="content center">
+            <h2 class="cursive">
+                Mountains<br>
+                Music<br>
+                Making Stuff<br><br>
+                These are just a few of my interests. I love learning about new things, and trying to find cool ways to integrate that new knowledge into my never-ending list of projects! There is always something new to learn and do!
+            </h2>
+        </div>
+    </div>
 </div>
+
+<!-- Interests Section -->
+<div id="interest-section">
+    <div class="interests">
+        {% for page in pages.keys() %}
+        <div class="center">
+            <div class="image-container">
+                <a href="{{ url_for(page) }}" class="image-link" title="{{ page_blurb[page] }}">
+                    <img src="{{ url_for('static', filename=page_photo[page]) }}" alt="{{ page }}">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Photo Section -->
+
+
 
 {% endblock %}
