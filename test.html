@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="/static/logos/ian-logo.png" alt="ian-logo">
+<style>
+    html {
+        background-color: #99856e;
+        font-family: 'Laila', sans-serif;
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+        color: bisque;
+    }
+
+    img {
+        height: 23rem;
+    }
+    footer {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    background-color: #797d8099;
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+footer .content {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    max-height: 1.4rem;
+}
+
+footer .logo {
+    flex: 1;
+    height: 3rem;
+    padding-right: 10rem;
+    text-decoration: none;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: center;
+    border-right: solid .25rem bisque;
+}
+
+footer nav li {
+    color: bisque;
+    list-style: none;
+    padding: 0 3.5rem;
+    border-left: solid .25rem bisque;
+    text-transform: uppercase;
+}
+
+footer .icon {
+    width: 1rem;
+}
+
+footer .mobile {
+    display: none;
+}
+</style>
+<footer>
+    <div class="content">
+        <a href="#"><img class="logo" src="static/logos/ian-logo.png" alt="top"></a>
+
+        <nav>
+            <!-- Desktop Footer Nav -->
+            <ul class="desktop">
+                <li><a href="#news">What's new</a></li>
+                <li><a href="/contact">Get in touch</a></li>
+            </ul>
+
+            <!-- Mobile Footer Nav -->
+            <ul class="mobile">
+                <li><a href="#news">icon</a></li>
+                <li><a href="/contact">icon</a></li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

@@ -25,3 +25,6 @@ def projects():
 def about():
     return render_template('about.html', pages=pages, page_photo=page_photo, page_logo=page_logo)
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')

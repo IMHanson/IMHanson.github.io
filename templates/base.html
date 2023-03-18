@@ -16,8 +16,15 @@
     <!-- Header -->
     <header>
         <div class="content">
-            <a href="/" class="desktop logo">IMHanson - Ian Hanson</a>
-            <a href="/" class="mobile logo icon"><img src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="ian-logo"></a>
+            <!-- Desktop Logo -->
+            <a href="/" class="desktop logo">IMHanson <div class="image-container"><img class="logo"
+                        src="{{ url_for('static', filename='logos/ian-logo.png')}}" alt="-"></div> Ian Hanson</a>
+
+            <!-- Mobile Logo -->
+            <a href="/" class="mobile logo icon"><img src="{{ url_for('static', filename='logos/ian-logo.png') }}"
+                    alt="ian-logo"></a>
+
+            <!-- Desktop Header Nav -->
             <nav class="desktop">
                 <ul>
                     {% for page in pages.keys() %}
@@ -25,10 +32,13 @@
                     {% endfor %}
                 </ul>
             </nav>
+
+            <!-- Mobile Header Nav -->
             <nav class="mobile">
                 <ul>
                     {% for page in pages.keys() %}
-                    <li><a class="icon" href="{{ url_for(page) }}"><img src="{{ url_for('static', filename=page_logo[page]) }}" alt="page"></a></li>
+                    <li><a class="icon" href="{{ url_for(page) }}"><img
+                                src="{{ url_for('static', filename=page_logo[page]) }}" alt="page"></a></li>
                     {% endfor %}
                 </ul>
             </nav>
@@ -36,10 +46,71 @@
     </header>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <main class="main-content">
         {% block content %}
         {% endblock %}
+    </main>
+
+    <!-- News Section -->
+    <div id="news" class="desktop">
+        <div class="content">
+            <div class="about-me">
+                <h1>Ian Hanson</h1>
+                <h2>Born in the mountains of Utah. Moved to Norway in 2008. Athlete, coach, guide, artist, writer,
+                    musician, luthier, handyman, tinkerer, father of two. Always ready for the next adventure!</h2>
+            </div>
+            <div class="contact-info">
+                <a href="/contact">
+                    <h1>Contact</h1>
+                </a>
+                <h2>Glimmervegen 18B <br>4347 Lye <br>Norway</h2>
+                <h2>+47 948 44 590</h2>
+            </div>
+            <div class="ian-logo">
+                <img src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="logo">
+            </div>
+            <div class="recent-posts">
+                <h1>Recent Posts</h1>
+                <ul>
+                    <li>Post 1</li>
+                    <li>Post 2</li>
+                    <li>Post 3</li>
+                    <li>Post 4</li>
+                    <li>Post 5</li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <h1>External Links</h1>
+                <div class="social-media-links">
+                    <ul>
+                        <li>Insta</li>
+                        <li>youtube</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="content">
+            <a href="#"><img class="logo" src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="top"></a>
+
+            <nav>
+                <!-- Desktop Footer Nav -->
+                <ul class="desktop">
+                    <li><a href="#news">What's new</a></li>
+                    <li><a href="/contact">Get in touch</a></li>
+                </ul>
+
+                <!-- Mobile Footer Nav -->
+                <ul class="mobile">
+                    <li><a href="#news">icon</a></li>
+                    <li><a href="/contact">icon</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
 </body>
 

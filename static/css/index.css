@@ -11,7 +11,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 1.2rem;
-    color: bisque;
+    color: var(--text-light);
 }
 
 #intro-banner {
@@ -22,7 +22,7 @@
     padding: 2.5rem 0;
     border-radius: 13px;
     line-height: 1.3;
-    background-color: rgba(0, 0, 0, 0.6);    
+    background-color: var(--transluscent-background);    
 }
 
 #intro-banner .content {
@@ -57,7 +57,7 @@
     padding: 2.5rem;
     border-radius: 13px;
     line-height: 1.4;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--transluscent-background);
 }
 
 /* Interest Section */
@@ -114,7 +114,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 13px;
-    color: bisque;
+    color: var(--text-light);
     font-size: 2rem;
     font-weight: bold;
     text-align: center;

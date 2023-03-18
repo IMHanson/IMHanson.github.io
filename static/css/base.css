@@ -1,5 +1,13 @@
 /* Universal Styles */
 
+:root {
+    --text-light: bisque;
+    --transluscent-background: #523d2899;
+    --solid-background: #99856e;
+    --header-background: #000;
+    --footer-background: #797d8099;
+}
+
 html {
     font-family: 'Laila', sans-serif;
     font-size: 16px;
@@ -14,6 +22,10 @@ html {
 
 .cursive {
     font-style: italic;
+}
+
+ul {
+    list-style: none;
 }
 
 .center {
@@ -32,10 +44,11 @@ html {
 /* Header */
 
 header {
+    align-items: center;
     list-style: none;
     text-decoration: none;
     width: 100%;
-    background-color: #111;
+    background-color: var(--header-background);
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -49,11 +62,17 @@ header .content {
 }
 
 header .logo {
+    display: flex;
     flex: 1;
+    align-items: center;
     font-weight: bold;
     font-size: 2rem;
     text-decoration: none;
-    color: bisque;
+    color: var(--text-light);
+}
+
+header img {
+    height: 2.75rem;
 }
 
 header nav ul {
@@ -65,22 +84,108 @@ nav li {
     padding-left: 3.5rem;
 }
 
-nav a {
+header nav a {
     text-transform: uppercase;
+}
+
+nav a {
     text-decoration: none;
-    vertical-align: bottom;
     line-height: 1.6;
     font-size: 1.4rem;
-    color: bisque;
+    color: var(--text-light);
 }
 
 header .icon {
     width: 1rem;
     padding-left: .75rem;
-    color: #f1f1f1;
+    color: var(--text-light);
 }
 
 header .mobile {
+    display: none;
+}
+
+/* News Section */
+#news {
+    position: relative;
+    color: bisque;
+    padding-bottom: 3.25rem;
+    width: 100%;
+    background-color: var(--solid-background);
+}
+
+#news h1 {
+    text-transform: uppercase;
+}
+
+#news .content {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+    text-align: center;
+}
+
+#news .about-me, .contact-info, .ian-logo, .recent-posts, .social-media {
+    width: 20%;
+}
+
+.contact-info a {
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.ian-logo img{
+    height: 18rem;
+    margin-top: 1.34rem;
+}
+
+
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    background-color: var(--footer-background);
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+footer .content {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    max-height: 1.4rem;
+}
+
+footer .logo {
+    flex: 1;
+    height: 3rem;
+    padding-right: 10rem;
+    text-decoration: none;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: center;
+    border-right: solid .25rem var(--text-light);
+}
+
+footer nav li {
+    padding-right: 3.5rem;
+    border-left: solid .25rem var(--text-light);
+    text-transform: uppercase;
+}
+
+footer .icon {
+    width: 1rem;
+}
+
+footer .mobile {
     display: none;
 }
 
