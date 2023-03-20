@@ -17,28 +17,34 @@
     <header>
         <div class="content">
             <!-- Desktop Logo -->
-            <a href="/" class="desktop logo">IMHanson <div class="image-container"><img class="logo"
-                        src="{{ url_for('static', filename='logos/ian-logo.png')}}" alt="-"></div> Ian Hanson</a>
+            <div class="desktop logo">
+                <a href="/">IMHanson <div class="image-container">
+                        <img class="logo" src="{{ url_for('static', filename='logos/ian-logo.png')}}" alt="-">
+                    </div> Ian Hanson</a>
+            </div>
 
             <!-- Mobile Logo -->
-            <a href="/" class="mobile logo icon"><img src="{{ url_for('static', filename='logos/ian-logo.png') }}"
-                    alt="ian-logo"></a>
+            <div class="mobile logo icon">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='logos/ian-logo.png') }}" alt="ian-logo">
+                </a>
+            </div>
 
             <!-- Desktop Header Nav -->
             <nav class="desktop">
                 <ul>
-                    {% for page in pages.keys() %}
-                    <li><a href="{{ url_for(page) }}">{{ page }}</a></li>
+                    {% for page in pages %}
+                    <li><a href="{{ url_for(page['name']) }}">{{ page['name'] }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>
 
             <!-- Mobile Header Nav -->
-            <nav class="mobile">
+            <nav class="mobile page-icons">
                 <ul>
-                    {% for page in pages.keys() %}
-                    <li><a class="icon" href="{{ url_for(page) }}"><img
-                                src="{{ url_for('static', filename=page_logo[page]) }}" alt="page"></a></li>
+                    {% for page in pages %}
+                    <li><a class="icon" href="{{ url_for(page['name']) }}"><img
+                                src="{{ url_for('static', filename=page['logo']) }}" alt="page['name']"></a></li>
                     {% endfor %}
                 </ul>
             </nav>
@@ -72,7 +78,7 @@
             <div class="recent-posts">
                 <h1>Recent Posts</h1>
                 <ul>
-                    <li>Post 1</li>
+                    <li><a href=""></a></li>
                     <li>Post 2</li>
                     <li>Post 3</li>
                     <li>Post 4</li>
@@ -80,13 +86,23 @@
                 </ul>
             </div>
             <div class="social-media">
-                <h1>External Links</h1>
-                <div class="social-media-links">
-                    <ul>
-                        <li>Insta</li>
-                        <li>youtube</li>
-                    </ul>
-                </div>
+                <h1>Social Media</h1>
+                <table class="social-media-links">
+                    <tr>
+                        {% for i in range(2) %}
+                        <td><a href="{{ social_media[i]['link'] }}" target="_blank"><img
+                                    src="{{ url_for('static', filename=social_media[i]['logo']) }}"
+                                    alt="{{ social_media[i]['name'] }}"></a></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for i in range(2) %}
+                        <td><a href="{{ social_media[i + 2]['link'] }}" target="_blank"><img
+                                    src="{{ url_for('static', filename=social_media[i + 2]['logo']) }}"
+                                    alt="{{ social_media[i + 2]['name'] }}"></a></td>
+                        {% endfor %}
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

@@ -1,55 +1,55 @@
-class Page:
-    def __init__(self, name, photo=None, blurb=None, logo=None):
-        self.name = name
-        self.photo = photo
-        self.blurb = blurb
-        self.logo = logo
-    
-    def photo(self):
-        return self.photo
+#####   Pages   #####
+adventures = {
+    'name': 'adventures',
+    'blurb': "Who knows what's gonna happen!",
+    'photo': 'pictures/climbing/kandersteg.jpg',
+    'logo': 'logos/navbar/adventure.png'}
 
-    def set_photo(self, new_photo):
-        self.photo = new_photo
+music = {
+    'name': 'music',
+    'blurb': 'listen, learn, play',
+    'photo': 'pictures/music/rhodes-keybed.jpg',
+    'logo': 'logos/navbar/record-player.png'}
 
-    def blurb(self):
-        return self.blurb
-    
-    def set_blurb(self, new_blurb):
-        self.blurb = new_blurb
+projects = {
+    'name': 'projects',
+    'blurb': 'making, fixing, restoring',
+    'photo': 'pictures/misc/sailboat-sketch.jpg',
+    'logo': 'logos/navbar/projects.png'}
 
-    def logo(self):
-        return self.logo
-    
-    def set_logo(self, new_logo):
-        self.logo = new_logo
+about = {
+    'name': 'about',
+    'blurb': 'who am I?',
+    'photo': 'pictures/climbing/skeissfjell.jpg',
+    'logo': 'logos/navbar/about.png'}
 
+#####   Social Media    #####
+instagram = {
+    'link': 'https://www.instagram.com/ian_the_dryfool/', 
+    'logo': 'logos/social-media/instagram.png',
+    'name': 'instagram'
+    }
 
-######   Pages  #####
-adventures = Page('adventures','pictures/climbing/kandersteg.jpg', "Who knows what's gonna happen!", 'logos/adventure-logo.png')
+youtube = {
+    'link': 'https://www.youtube.com/@imhanson-video',
+    'logo': 'logos/social-media/youtube.png',
+    'name': 'youtube'
+    }
 
-music = Page('music', 'pictures/music/rhodes-keybed.jpg', 'listen, learn, play', 'logos/projects-logo.png')
+tiktok = {
+    'link': 'https://www.tiktok.com/@imhanson',
+    'logo': 'logos/social-media/tiktok.png',
+    'name': 'tiktok'
+          }
 
-projects = Page('projects', 'pictures/misc/sailboat-sketch.jpg', 'making, fixing, restoring', 'logos/projects-logo.png')
+github = {
+    'link': 'https://github.com/imhanson', 
+    'logo': 'logos/social-media/github.png', 
+    'name': 'github'
+          }
 
-about_me = Page('about', 'pictures/climbing/skeissfjell.jpg', 'Who am I?', 'logos/ian-logo.png')
+#####   Dictionaries & Lists   #####
+social_media = [instagram, youtube, tiktok, github]
+pages = [adventures, music, projects, about]
 
-
-#####   Dictionaries    #####
-pages = {}
-page_photo = {}
-page_blurb = {}
-page_logo = {}
-
-def add_page(new_page):
-    name = new_page.name
-    pages[name] = new_page
-
-add_page(adventures)
-add_page(music)
-add_page(projects)
-add_page(about_me)
-
-for key, val in pages.items():
-    page_photo[key] = val.photo
-    page_blurb[key] = val.blurb
-    page_logo[key] = val.logo
+contact_inbox = {}

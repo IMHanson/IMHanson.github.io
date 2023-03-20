@@ -1,5 +1,49 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+{% endblock %}
+
 {% block content %}
-<h1>Contact</h1>
+<div class="contact">
+    <div class="content">
+
+        {% if sent == True %}
+
+        <div class="sent">
+            <div class="center">
+                <h1>Thanks for the message!</h1>
+                <h2>Here are some flowers</h2>
+                <a href="{{ url_for('contact') }}" class="flowers-link">
+                    <img src="{{ url_for('static', filename='pictures/photography/flowers-in-quartzite.jpg') }}"
+                        alt="Sorry, apparently you don't get any flowers">
+                </a>
+            </div>
+        </div>
+
+        {% else %}
+
+        <div class="title">
+            <h1>Get in touch</h1>
+        </div>
+        <div class="form">
+            <form action="{{ url_for('contact') }}" method="post" class="contact-form">
+                {{ contact_form.hidden_tag() }}
+                {{ contact_form.label }}
+                {{ contact_form.name.label }}
+                {{ contact_form.name }}
+                {{ contact_form.email.label }}
+                {{ contact_form.email }}
+                {{ contact_form.subject.label }}
+                {{ contact_form.subject }}
+                {{ contact_form.message.label }}
+                {{ contact_form.message }}
+                {{ contact_form.submit }}
+            </form>
+        </div>
+
+        {% endif %}
+
+    </div>
+</div>
 {% endblock %}

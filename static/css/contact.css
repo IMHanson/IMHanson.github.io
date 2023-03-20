@@ -1,0 +1,105 @@
+/* Contact Form */
+.contact {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 50rem;
+    color: var(--text-light);
+    background-image: url('/static/pictures/photography/koi-ursa.jpg');
+    background-size: cover;
+    background-position: top;
+}
+
+.contact .content {
+    position: absolute;
+    top: 5%;
+    height: 40rem;
+    width: 35rem;
+    border-radius: 13px;
+    background-color: var(--transluscent-background);
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-form {
+    margin: 1.5rem;
+}
+
+.sent {
+    display: flex;
+    justify-content: center;
+}
+
+.flowers-link {
+    display: inline-block;
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.flowers-link img {
+    display: block;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 13px;
+    filter: brightness(100%);
+    transition: filter 0.2s ease-in-out;
+}
+
+.flowers-link:hover img {
+    border-radius: 13px;
+    transform: scale(110%);
+    filter: brightness(50%);
+}
+
+.flowers-link:hover::after {
+    content: "Forget something? Send another message";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 13px;
+    color: var(--text-light);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    padding: 1rem 0 .5rem 0;
+    width: 100%;
+}
+
+input#name, 
+input#email {
+    width: 20rem;
+    border-radius: 3px;
+    font-size: 1.1rem;
+}
+
+input#subject {
+    width: 30rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+textarea#message {
+    width: 30rem;
+    height: 10rem;
+    border-radius: 3px;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
+
+input#submit {
+    display: block;
+}

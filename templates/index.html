@@ -32,11 +32,11 @@
 <!-- Interests Section -->
 <div id="interest-section">
     <div class="interests">
-        {% for page in pages.keys() %}
+        {% for page in pages %}
         <div class="center">
             <div class="image-container">
-                <a href="{{ url_for(page) }}" class="image-link" title="{{ page_blurb[page] }}">
-                    <img src="{{ url_for('static', filename=page_photo[page]) }}" alt="{{ page }}">
+                <a href="{{ url_for(page['name']) }}" class="image-link" title="{{ page['blurb'] }}">
+                    <img src="{{ url_for('static', filename=page['photo']) }}" alt="{{ page['name'] }}">
                 </a>
             </div>
         </div>
