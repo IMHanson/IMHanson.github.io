@@ -1,9 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for
-from helper import pages, social_media, contact_inbox
+import os
+
+from dotenv import load_dotenv
+from flask import Flask, redirect, render_template, request, url_for
+from flask_mail import Mail, Message
+
 from forms import ContactForm
+from helper import pages, social_media
+
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
+MAIL_SERVER = os.getenv('MAIL_SERVER')
+MAIL_PORT = os.getenv('MAIL_PORT')
+MY_EMAIL = os.getenv('MY_EMAIL')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 app = Flask(__name__)
-app.secret_key = 'development key'
+app.secret_key = SECRET_KEY
+
+mail = Mail()
+app.config['MAIL_SERVER'] = MAIL_SERVER
+app.config['MAIL_PORT'] = MAIL_PORT
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = MY_EMAIL
+app.config['MAIL_PASSWORD'] = EMAIL_PASSWORD
+mail.init_app(app)
+
 
 @app.route('/')
 def index():
@@ -14,36 +36,64 @@ def index():
 def adventures():
     return render_template('adventures.html', pages=pages, social_media=social_media)
 
+
 @app.route('/music')
 def music():
     return render_template('music.html', pages=pages, social_media=social_media)
+
 
 @app.route('/projects')
 def projects():
     return render_template('projects.html', pages=pages, social_media=social_media)
 
+
 @app.route('/about')
 def about():
     return render_template('about.html', pages=pages, social_media=social_media)
 
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     sent = False
-    contact_form = ContactForm(csrf_enabled=False)
-    
+    contact_form = ContactForm()
+
     if contact_form.validate_on_submit():
-        message_id = 'message #' + str(0000 + len(contact_inbox) + 1)
         sent = True
 
-        contact_inbox[message_id] = {
-            'name': contact_form.name.data,
-            'email': contact_form.email.data,
-            'subject': contact_form.subject.data,
-            'message': contact_form.message.data
-        }
+        subject = contact_form.subject.data
+        name = contact_form.name.data
+        user_email = contact_form.email.data
+        message = contact_form.message.data
 
-        print(contact_inbox)
+        #   Email from user to be sent to my account
+        user_message = Message(subject, sender=MY_EMAIL, recipients=[MY_EMAIL])
+
+        user_message.body = """
+        From: {0} - ({1}):
+
+        {2}
+
+        """.format(name, user_email, message)
+
+        confirmation_email = Message('Confirmation - Thank you for getting in touch', sender=MY_EMAIL, recipients=[user_email])
+
+        confirmation_email.body = """
+        Thank you for getting in touch!
+
+        You should hopefully receive a reply within the next few days. I will try to address any questions or comments that you may have.  Feel free to explore the site in the meantime.
+
+        Have a great day!
+        -Ian
+
+        -----------YOUR MESSAGE-----------
+
+        {0}
+
+        """.format(message)
+
+        mail.send(user_message)
+        mail.send(confirmation_email)
 
         redirect(url_for('contact', sent=sent, _external=True, _scheme='https'))
-    
-    return render_template('contact.html', contact_form= contact_form, pages=pages, social_media=social_media, sent=sent)
+
+    return render_template('contact.html', contact_form=contact_form, pages=pages, social_media=social_media, sent=sent)

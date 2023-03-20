@@ -1,4 +1,7 @@
+
+
 #####   Pages   #####
+
 adventures = {
     'name': 'adventures',
     'blurb': "Who knows what's gonna happen!",
@@ -23,7 +26,9 @@ about = {
     'photo': 'pictures/climbing/skeissfjell.jpg',
     'logo': 'logos/navbar/about.png'}
 
+
 #####   Social Media    #####
+
 instagram = {
     'link': 'https://www.instagram.com/ian_the_dryfool/', 
     'logo': 'logos/social-media/instagram.png',
@@ -48,8 +53,11 @@ github = {
     'name': 'github'
           }
 
+
 #####   Dictionaries & Lists   #####
+
 social_media = [instagram, youtube, tiktok, github]
+
 pages = [adventures, music, projects, about]
 
 contact_inbox = {}
