@@ -1,9 +1,7 @@
 import os
-
 from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mail import Mail, Message
-
 from forms import ContactForm
 from helper import pages, social_media
 
@@ -27,31 +25,32 @@ app.config['MAIL_PASSWORD'] = EMAIL_PASSWORD
 mail.init_app(app)
 
 
+#   Main Page
 @app.route('/')
 def index():
     return render_template("index.html", pages=pages, social_media=social_media)
 
-
+#   Adventures Landing Page
 @app.route('/adventures')
 def adventures():
     return render_template('adventures.html', pages=pages, social_media=social_media)
 
-
+#   Music Landing Page
 @app.route('/music')
 def music():
     return render_template('music.html', pages=pages, social_media=social_media)
 
-
+#   Projects Landing Page
 @app.route('/projects')
 def projects():
     return render_template('projects.html', pages=pages, social_media=social_media)
 
-
+#   About Landing Page
 @app.route('/about')
 def about():
     return render_template('about.html', pages=pages, social_media=social_media)
 
-
+#   Contact Page
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     sent = False
@@ -75,6 +74,7 @@ def contact():
 
         """.format(name, user_email, message)
 
+        #   Email to the user confirming that their message was sent
         confirmation_email = Message('Confirmation - Thank you for getting in touch', sender=MY_EMAIL, recipients=[user_email])
 
         confirmation_email.body = """

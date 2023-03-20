@@ -1,5 +1,3 @@
-
-
 #####   Pages   #####
 
 adventures = {
@@ -59,5 +57,3 @@ github = {
 social_media = [instagram, youtube, tiktok, github]
 
 pages = [adventures, music, projects, about]
-
-contact_inbox = {}

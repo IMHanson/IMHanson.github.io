@@ -10,10 +10,3 @@ class ContactForm(FlaskForm):
     subject = StringField("Subject", validators=[DataRequired()])
     message = TextAreaField("Message", validators=[DataRequired()])
     submit = SubmitField("Submit")
-
-
-#####   Delete this! #####
-mail_server = 'smtp.gmail.com'
-mail_port = 465
-my_email = 'imhanson91@gmail.com'
-email_password = 'frrgqmgcbanhkbnq'
