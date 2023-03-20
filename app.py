@@ -11,8 +11,27 @@ MAIL_SERVER = os.getenv('MAIL_SERVER')
 MAIL_PORT = os.getenv('MAIL_PORT')
 MY_EMAIL = os.getenv('MY_EMAIL')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+from helper import pages, social_media
+
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
+MAIL_SERVER = os.getenv('MAIL_SERVER')
+MAIL_PORT = os.getenv('MAIL_PORT')
+MY_EMAIL = os.getenv('MY_EMAIL')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 app = Flask(__name__)
+app.secret_key = SECRET_KEY
+
+mail = Mail()
+app.config['MAIL_SERVER'] = MAIL_SERVER
+app.config['MAIL_PORT'] = MAIL_PORT
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = MY_EMAIL
+app.config['MAIL_PASSWORD'] = EMAIL_PASSWORD
+mail.init_app(app)
+
 app.secret_key = SECRET_KEY
 
 mail = Mail()
@@ -54,6 +73,8 @@ def about():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     sent = False
+    contact_form = ContactForm()
+
     contact_form = ContactForm()
 
     if contact_form.validate_on_submit():
