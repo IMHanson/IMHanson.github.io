@@ -5,14 +5,7 @@ from flask_mail import Mail, Message
 from forms import ContactForm
 from helper import pages, social_media
 
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
-MAIL_SERVER = os.getenv('MAIL_SERVER')
-MAIL_PORT = os.getenv('MAIL_PORT')
-MY_EMAIL = os.getenv('MY_EMAIL')
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
-from helper import pages, social_media
-
+#####   Environment Variables   ##### 
 load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 MAIL_SERVER = os.getenv('MAIL_SERVER')
@@ -20,20 +13,11 @@ MAIL_PORT = os.getenv('MAIL_PORT')
 MY_EMAIL = os.getenv('MY_EMAIL')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
+#####   Initiate Flask  #####
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
-mail = Mail()
-app.config['MAIL_SERVER'] = MAIL_SERVER
-app.config['MAIL_PORT'] = MAIL_PORT
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = MY_EMAIL
-app.config['MAIL_PASSWORD'] = EMAIL_PASSWORD
-mail.init_app(app)
-
-app.secret_key = SECRET_KEY
-
+#####   Initiate Flask-Mail #####
 mail = Mail()
 app.config['MAIL_SERVER'] = MAIL_SERVER
 app.config['MAIL_PORT'] = MAIL_PORT
@@ -44,6 +28,7 @@ app.config['MAIL_PASSWORD'] = EMAIL_PASSWORD
 mail.init_app(app)
 
 
+#####   Routes  #####
 #   Main Page
 @app.route('/')
 def index():
