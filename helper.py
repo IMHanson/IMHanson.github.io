@@ -1,30 +1,55 @@
+import re
+from pathlib import Path
+
+def find_photos(parent, photo_list=[]):
+    parent = Path(parent)
+    photos = photo_list
+    photo_pattern = '.*(jpe?g|png|webp)'
+    
+    for child in parent.iterdir():
+        if child.is_file():
+            if re.match(photo_pattern, child.name):
+                photo = str(child).replace('static/', '')
+                photos.append(photo)
+        elif child.is_dir():
+            find_photos(child, photos)
+    return photos
 
 #####   Pages   #####
 
 adventures = {
     'name': 'adventures',
     'blurb': "Who knows what's gonna happen!",
-    'photo': 'pictures/climbing/kandersteg.jpg',
     'logo': 'logos/navbar/adventure.png'}
 
 music = {
     'name': 'music',
     'blurb': 'listen, learn, play',
-    'photo': 'pictures/music/rhodes-keybed.jpg',
     'logo': 'logos/navbar/record-player.png'}
 
 projects = {
     'name': 'projects',
     'blurb': 'making, fixing, restoring',
-    'photo': 'pictures/misc/sailboat-sketch.jpg',
     'logo': 'logos/navbar/projects.png'}
 
 about = {
     'name': 'about',
     'blurb': 'who am I?',
-    'photo': 'pictures/climbing/skeissfjell.jpg',
     'logo': 'logos/navbar/about.png'}
 
+pages = [adventures, music, projects, about]
+
+for page in pages:
+    base_path = './static/pictures/page-links/'
+    dir_name = f"{page['name']}"
+    parent_path = Path(base_path + dir_name)
+    pattern = '.*(jpe?g|webp)'
+    photo_path = ''
+
+    for file in parent_path.iterdir():
+        if re.match(pattern, file.name):
+            photo_path = str(file).replace('static/', '')
+    page['photo'] = photo_path
 
 #####   Social Media    #####
 
@@ -52,9 +77,51 @@ github = {
     'name': 'github'
           }
 
-
-#####   Dictionaries & Lists   #####
-
 social_media = [instagram, youtube, tiktok, github]
 
-pages = [adventures, music, projects, about]
+#####   About Me    #####
+
+growing_up = {
+    'title-text': 'growing up',
+    'title-pic': 'posts/about-me/photos/growing-up/snow-cave.jpg'
+}
+
+norway = {
+    'title-text': 'norway',
+    'title-pic': 'posts/about-me/photos/norway/Torghatten.jpeg'
+}
+
+studying = {
+    'title-text': 'studying',
+    'title-pic': 'posts/about-me/photos/studying/fanaråki.jpeg'
+}
+
+climbing = {
+    'title-text': 'climbing',
+    'title-pic': 'posts/about-me/photos/climbing/guiding_view.jpg'
+}
+
+covid = {
+    'title-text': 'life after covid',
+    'title-pic': 'posts/about-me/photos/life-after-covid/reel-to-reel-chassis.jpg'
+}
+
+about_me = [growing_up, norway, studying, climbing, covid]
+
+for era in about_me:
+    base_path = './static/posts/about-me/'
+    era_name = era['title-text'].replace(' ', '-')
+    text_path = Path(base_path + 'text')
+    photo_path = f'{base_path}photos/{era_name}'
+    text_pattern = f'{era_name}.txt'
+    era_text = ''
+    era_photos = find_photos(photo_path, [])
+
+    for child in text_path.iterdir():
+        if re.match(text_pattern, child.name):
+            era_text = child.read_text()
+
+    era['text'] = era_text
+    era['photos'] = era_photos
+
+print(growing_up['photos'])
