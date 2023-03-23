@@ -1,22 +1,29 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, request, url_for
 from flask_mail import Mail, Message
 from forms import ContactForm
-from helper import pages, social_media
-from env_var import env_vars
+from helper import pages, secret_path, social_media, about_me
 
 #####   Environment Variables   ##### 
 
-SECRET_KEY = env_vars['SECRET_KEY']
-MAIL_SERVER = env_vars['MAIL_SERVER']
-MAIL_PORT = env_vars['MAIL_PORT']
-MY_EMAIL = env_vars['MY_EMAIL']
-EMAIL_PASSWORD = env_vars['EMAIL_PASSWORD']
+load_dotenv(secret_path)
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+MAIL_SERVER = os.getenv('MAIL_SERVER')
+MAIL_PORT = os.getenv('MAIL_PORT')
+MY_EMAIL = os.getenv('MY_EMAIL')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+
 
 #####   Initiate Flask  #####
+
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
+
 #####   Initiate Flask-Mail #####
+
 mail = Mail()
 app.config['MAIL_SERVER'] = MAIL_SERVER
 app.config['MAIL_PORT'] = MAIL_PORT
@@ -51,7 +58,7 @@ def projects():
 #   About Landing Page
 @app.route('/about')
 def about():
-    return render_template('about.html', pages=pages, social_media=social_media)
+    return render_template('about.html', pages=pages, social_media=social_media, about_me=about_me)
 
 #   Contact Page
 @app.route('/contact', methods=['GET', 'POST'])

@@ -1,5 +1,6 @@
 import re
 from pathlib import Path
+from random import randint
 
 def find_photos(parent, photo_list=[]):
     parent = Path(parent)
@@ -14,6 +15,8 @@ def find_photos(parent, photo_list=[]):
         elif child.is_dir():
             find_photos(child, photos)
     return photos
+
+secret_path = '/Users/hanson-nordstokke/Documents/Coding/IMHanson/secrets.env'
 
 #####   Pages   #####
 
@@ -116,12 +119,15 @@ for era in about_me:
     text_pattern = f'{era_name}.txt'
     era_text = ''
     era_photos = find_photos(photo_path, [])
+    random_photos = []
 
     for child in text_path.iterdir():
         if re.match(text_pattern, child.name):
             era_text = child.read_text()
+    while len(random_photos) < 16:
+        index = randint(0, len(era_photos)-1)
+        if not era_photos[index] in random_photos:
+            random_photos.append(era_photos[index])
 
     era['text'] = era_text
-    era['photos'] = era_photos
-
-print(growing_up['photos'])
+    era['photos'] = random_photos

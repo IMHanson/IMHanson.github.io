@@ -1,12 +1,44 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="about-me">
     <div class="content">
         <div class="center">
-            <h1>about me</h1>
+            <div class="page-title">
+                <h1>Ian Hanson</h1>
+                <img class="profile-picture"
+                    src="{{ url_for('static', filename='pictures/misc/sailing-profile.webp') }}" alt="me-sailing">
+            </div>
+            <div class="eras">
+                {% for era in about_me %}
+                <div class="{{ era['title-text'] | replace(' ', '-') }}">
+                    <div class="era-text">
+                        <!-- <img src="{{ url_for('static', filename=era['title-pic']) }}" alt="background"> -->
+                        <div class="era-title">
+                            <h1>{{ era['title-text'] }}</h1>
+                        </div>
+                        <div class="text-body">
+                            <p>{{ era['text'] }}</p>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <ul class="photo-gallery">
+                            {% for i in range(era['photos'] | length) %}
+                            <li>
+                                <img src="{{ url_for('static', filename=era['photos'][i]) }}" alt="picture">
+                                <div class="overlay"><span>Image Caption</span></div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        <h2>Ian Hanson</h2>
     </div>
 </div>
 {% endblock %}
