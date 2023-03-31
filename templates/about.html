@@ -14,10 +14,12 @@
                     src="{{ url_for('static', filename='pictures/misc/sailing-profile.webp') }}" alt="me-sailing">
             </div>
             <div class="eras">
-                {% for era in about_me %}
-                <div class="{{ era['title-text'] | replace(' ', '-') }}">
+                {% for i in range(about_me | length - 1) %}
+                {% set era = about_me[i] %}
+                <div class="era-container">
+                    {% if i % 2 == 0 %}
+                <div class="era-content">
                     <div class="era-text">
-                        <!-- <img src="{{ url_for('static', filename=era['title-pic']) }}" alt="background"> -->
                         <div class="era-title">
                             <h1>{{ era['title-text'] }}</h1>
                         </div>
@@ -25,20 +27,37 @@
                             <p>{{ era['text'] }}</p>
                         </div>
                     </div>
-                    <div class="gallery-container">
-                        <ul class="photo-gallery">
-                            {% for i in range(era['photos'] | length) %}
-                            <li>
-                                <img src="{{ url_for('static', filename=era['photos'][i]) }}" alt="picture">
-                                <div class="overlay"><span>Image Caption</span></div>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <div class="img-container" title="{{ era['title-pic'][1] }}">
+                        <img src="{{ url_for('static', filename=era['title-pic'][0]) }}">
                     </div>
                 </div>
-                {% endfor %}
+                {% else %}
+                <div class="era-content">
+                    <div class="img-container" title="{{ era['title-pic'][1] }}">
+                        <img src="{{ url_for('static', filename=era['title-pic'][0]) }}">
+                    </div>
+                    <div class="era-text">
+                        <div class="era-title">
+                            <h1>{{ era['title-text'] }}</h1>
+                        </div>
+                        <div class="text-body">
+                            <p>{{ era['text'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="photo-gallery">
+                    {% for j in range(era['photos'] | length) %}
+                    <div class="img-container" title="{{ era['captions'][j] }}">
+                        <img src="{{ url_for('static', filename=era['photos'][j]) }}" alt="picture">
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
+            <br><br>
+            {% endfor %}
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
