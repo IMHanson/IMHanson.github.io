@@ -1,13 +1,13 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, url_for
 from flask_mail import Mail, Message
 from forms import ContactForm
-from helper import pages, secret_path, social_media, about_me
+from helper import pages, social_media, about_me
 
 #####   Environment Variables   ##### 
 
-load_dotenv(secret_path)
+load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 MAIL_SERVER = os.getenv('MAIL_SERVER')

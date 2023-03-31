@@ -1,62 +1,120 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html {
+    background-color: #262f42;
+    --dark-transparent: #625c5c15;
 }
 
-.gallery-container {
-    padding: 40px 5%;
-    background-color: var(--transluscent-background);
+/* Title Section */
+.page-title {
+    display: flex;
+    justify-content: center;
+    height: 30rem;
+    width: 100%;
+    align-items: center;
+    background-image: url('/static/posts/about-me/photos/studying/lifjell-bø.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-ul {
-    list-style: none;
+.page-title h1 {
+    position: relative;
+    background-color: #625c5c15;
+    border-radius: 13px;
+    padding: 1vh;
+    font-size: 3rem;
+    margin: 0 6rem 6rem 0;
+}
+
+.page-title img {
+    border-radius: 13px;
+    border: 5px double bisque;
+    box-shadow: 7px 7px 5px black;
+}
+
+/* Eras */
+.eras {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.era-container {
+    width: 100%;
+    border-top: 5px double bisque;
+}
+
+.era-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    margin: 3rem;
+}
+
+.era-content img {
+    max-width: 40rem;
+    max-height: 40rem;
+    box-shadow: 7px 7px 5px;
+}
+
+.era-text {
+    color: var(--text-light);
+    padding: 3rem;
+    height: fit-content;
+    font-size: larger;
+    text-align: justify;
+    text-justify: newspaper;
+}
+
+.era-text h1 {
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 1px 1px var(--transluscent-background);
 }
 
 .photo-gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-}
-
-.photo-gallery > li {
-    flex: 1 1 auto;
-    height: 300px;
-    cursor: pointer;
-    position: relative;
-}
-
-.photo-gallery::after {
-    content: "";
-    flex-grow: 999;
-}
-
-.photo-gallery li img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    border-radius: 5px;
-}
-
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--transluscent-background);
-    top: 0;
-    left: 0;
-    transform: scale(0);
-    transition: all 0.2s 0.1s ease-in-out;
-    color: var(--light-text);
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.photo-gallery li:hover .overlay {
-    transform: scale(1);
+.img-container {
+    position: relative;
+    max-width: 30rem;
+    max-height: 30rem;
+    border-radius: 13px;
+    padding: 1rem;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
+.img-container img {
+    display: block;
+    flex: 1 1 auto;
+    max-width: 30rem;
+    height: 100%;
+    max-height: 30rem;
+    width: auto;
+    object-fit: contain;
+    border-radius: 13px;
+    filter: brightness(100%);
+    transition: filter 0.2s ease-in-out;
+}
 
+.img-container:hover img {
+    filter: brightness(50%);
+}
 
+.img-container:hover::after {
+    content: attr(title);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 13px;
+    color: var(--text-light);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+}
