@@ -5,7 +5,8 @@
     --transluscent-background: #523d2899;
     --solid-background: #99856e;
     --header-background: #000;
-    --footer-background: #797d8099;
+    --footer-background: #242116b6;
+    --dark-background: #262f42;
 }
 
 html {
@@ -13,6 +14,7 @@ html {
     font-size: 16px;
     line-height: 1.4;
     width: 100%;
+    background-color: var(--dark-background);
 }
 
 .main-content {
